@@ -1,39 +1,46 @@
-import { useState,useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import searchOutline from '../assets/SearchOutline.svg';
 import Spinner from './Spinner';
-import {Link} from "react-router-dom"
-import {bookContext} from "../context/resetPassContext"
+import { Link } from 'react-router-dom';
+import { bookContext } from '../context/bookContext';
 const isRegularExpression = /[$^]/;
 
 function SearchBar() {
-  const {state,submitSearch,selectType,enterSearchKey,handleIsActive,setError}=useContext(bookContext)
+  const {
+    state,
+    submitSearch,
+    selectType,
+    enterSearchKey,
+    handleIsActive,
+    setError,
+  } = useContext(bookContext);
   const submit = async () => {
-    
     try {
-       if(!state.selectedType) {
-        console.log(state.selectedType)
-        setError("sélectionnner le type de recherche !");
+      if (!state.selectedType) {
+        console.log(state.selectedType);
+        setError('sélectionnner le type de recherche !');
         return;
       }
       if (!state.searchKey.trim().length) {
         setError('saisir quelques chose !');
       }
 
-      if (state.selectedType == 'simple' && isRegularExpression.test(state.searchKey)) {
+      if (
+        state.selectedType == 'simple' &&
+        isRegularExpression.test(state.searchKey)
+      ) {
         setError('terme entrée est une expression régulière !');
         return;
       }
-      submitSearch()
+      submitSearch();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
-
-  useEffect(()=>{
-    if(!state.result.length) handleIsActive()
-  },[state.result])
-
+  useEffect(() => {
+    if (!state.result.length) handleIsActive();
+  }, [state.result]);
 
   return (
     <div className="w-full xl:w-3/4 mx-auto my-10">
@@ -81,16 +88,17 @@ function SearchBar() {
           <option value={'advanced'}>Advanced</option>
         </select>
 
-        {
-          (state.result.length && state.isActive) ? 
-       
-        <Link to={`/suggestions/${state.searchKey}`} state={{
-          searchType:state.selectedType
-        }} className="btn1 bg-primaryColor px-6 py-4 text-white">
-          see suggestions
-        </Link> :null
-
-      }
+        {state.result.length && state.isActive ? (
+          <Link
+            to={`/suggestions/${state.searchKey}`}
+            state={{
+              searchType: state.selectedType,
+            }}
+            className="btn1 bg-primaryColor px-6 py-4 text-white"
+          >
+            see suggestions
+          </Link>
+        ) : null}
       </div>
       {/* message */}
       <span className="text-red-500 block">{state.error}</span>
