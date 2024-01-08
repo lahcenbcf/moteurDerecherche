@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "8fd3",
+      "email": "h.bencharef@esi-sba.dz",
+      "password": "lahcen123"
+    },
+    {
+      "id": "4818",
+      "email": "h.bencharef@esi-sba.dz",
+      "password": "lahcen123"
+    },
+    {
+      "id": "e52c",
+      "email": "hassane@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "1173",
+      "email": "lahcenbencharef@gmail.com",
+      "password": "12345678"
+    }
+  ]
+}
