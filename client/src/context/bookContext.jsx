@@ -9,7 +9,8 @@ const reducer=(state,action)=>{
         case "CLEAR_ERROR":
             return {
                 ...state,
-                errorMessage:""
+                errorMessage:"",
+                error:""
             }
         case "GET_SEARCH_RESULT":
             return {

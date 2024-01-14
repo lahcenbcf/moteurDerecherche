@@ -1,4 +1,5 @@
 import homeImage from "../assets/home-image.svg"
+import {Link} from "react-router-dom" 
 function HomeScreen() {
   return (
     <div className="container mx-auto w-full px-3 pt-20 lg:pt-6 max-h-screen flex flex-wrap items-center bg-white min-h-screen">
@@ -17,7 +18,7 @@ function HomeScreen() {
         <img src={homeImage} alt="background" className="w-[100%] xl:scale-75 object-cover" />
         </div>
                 
-                <button className="Btn2 w-10/12 my-4 py-4 text-white md:hidden bg-seconadryColor ">Découvrir la collection</button>
+                <Link to={"/home"} className="Btn2 w-10/12 my-4 py-4 text-white md:hidden bg-seconadryColor ">Découvrir la collection</Link>
         </div>
         
     </div>

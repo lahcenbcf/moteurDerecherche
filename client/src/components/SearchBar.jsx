@@ -10,10 +10,12 @@ function SearchBar() {
     state,
     submitSearch,
     selectType,
+    clearError,
     enterSearchKey,
     handleIsActive,
     setError,
   } = useContext(bookContext);
+  console.log(state.selectedType)
   const submit = async () => {
     try {
       if (!state.selectedType) {
@@ -32,6 +34,7 @@ function SearchBar() {
         setError('terme entrée est une expression régulière !');
         return;
       }
+      clearError()
       submitSearch();
     } catch (error) {
       console.log(error);
